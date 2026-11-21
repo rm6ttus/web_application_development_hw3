@@ -1,0 +1,134 @@
+import { createStore } from 'vuex';
+import defaultAvatar from './images/user_avatar.png';
+
+export default createStore({
+  state: {
+    posts: [
+      {
+        id: 1,
+        author: {
+          name: 'John Doe',
+          avatar: defaultAvatar
+        },
+        createTime: '2026-10-03T10:15:00Z',
+        content: 'Tartu 2024 - Beautiful autumn day exploring the city center and cultural monuments!',
+        media: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTX63naz52LHLcVyaYgZop-ExZRuWwlRUwRe38ha9CY8g&s=10',
+        likes: 24
+      },
+      {
+        id: 2,
+        author: {
+          name: 'Anna Naan',
+          avatar: defaultAvatar
+        },
+        createTime: '2026-10-02T18:42:10Z',
+        content: 'Just spent like an hour sleeping in lecture.',
+        media: null,
+        likes: 5
+      },
+      {
+        id: 3,
+        author: {
+          name: 'Michael Brown',
+          avatar: defaultAvatar
+        },
+        createTime: '2026-09-28T21:05:45Z',
+        content: 'Library study session in full swing before the midterm exams next week. Good luck everyone!',
+        media: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoPAQkvJu2GfvRjXj6Il3q_ecyTgpstng9rkN1BiuKag&s=10',
+        likes: 42
+      },
+      {
+        id: 4,
+        author: {
+          name: 'Sarah Connor',
+          avatar: defaultAvatar
+        },
+        createTime: '2026-10-25T14:30:00Z',
+        content: 'Looking for teammates for the upcoming hackathon. We need one more frontend developer. DM me if interested!',
+        media: null,
+        likes: 12
+      },
+      {
+        id: 5,
+        author: {
+          name: 'David Lee',
+          avatar: defaultAvatar
+        },
+        createTime: '2026-09-20T09:12:33Z',
+        content: 'Great turnout at the welcome campus barbecue event today! Amazing food and music.',
+        media: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaOoxP2HIgG5i62Ms6ggoACeFXsvr-L1rnOrWT2zJQQg&s=10',
+        likes: 58
+      },
+      {
+        id: 6,
+        author: {
+          name: 'Emily Watson',
+          avatar: defaultAvatar
+        },
+        createTime: '2026-10-28T16:20:00Z',
+        content: 'Freshly baked cinnamon rolls and coffee to keep the late-night coding going. ☕🥐',
+        media: 'https://sallysbakingaddiction.com/wp-content/uploads/2013/05/easy-soft-cinnamon-rolls-2.jpg',
+        likes: 31
+      },
+      {
+        id: 7,
+        author: {
+          name: 'Kert Tamm',
+          avatar: defaultAvatar
+        },
+        createTime: '2026-10-27T08:11:05Z',
+        content: 'Does anyone have notes from yesterday\'s web development lecture?',
+        media: null,
+        likes: 3
+      },
+      {
+        id: 8,
+        author: {
+          name: 'Laura Smith',
+          avatar: defaultAvatar
+        },
+        createTime: '2026-10-26T19:50:12Z',
+        content: 'Evening jog along the Emajõgi river. Autumn vibes are unmatched!',
+        media: 'https://www.kalapeedia.ee/u/veekogud/Emaj%C3%B5gi%20Tartus%20suurvee%20ajal.jpg',
+        likes: 19
+      },
+      {
+        id: 9,
+        author: {
+          name: 'Marten Kuusk',
+          avatar: defaultAvatar
+        },
+        createTime: '2026-10-24T12:00:00Z',
+        content: 'Board game night this Friday at the student lounge! Bring your favorite games.',
+        media: null,
+        likes: 15
+      },
+      {
+        id: 10,
+        author: {
+          name: 'Sophia Martinez',
+          avatar: defaultAvatar
+        },
+        createTime: '2026-10-20T11:45:30Z',
+        content: 'Finally submitted my project report! Time to celebrate with some pizza.',
+        media: 'https://uspizza.in/assets/images/tasty-pizza-hand.webp',
+        likes: 47
+      }
+    ]
+  },
+  mutations: {
+    // Increments likes on the matching post
+    incrementLike(state, postId) {
+      const post = state.posts.find((item) => item.id === postId);
+      if (post) {
+        post.likes += 1;
+      }
+    },
+    // Resets likes on all posts back to 0
+    resetAllLikes(state) {
+      state.posts.forEach((post) => {
+        post.likes = 0;
+      });
+    }
+  }
+});
